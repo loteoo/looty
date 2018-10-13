@@ -4,7 +4,7 @@
 
 
 // Sets the new item input value in the state
-export const setInputValue = (state, ev) => ({
+export const setSearch = (state, ev) => ({
   ...state,
-  inputValue: ev.target.value
+  search: ev.target.value
 })
