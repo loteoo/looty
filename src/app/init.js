@@ -1,8 +1,15 @@
 import {searchForm} from './components/SearchForm/init.js'
+import {receiveItems} from './actions.js'
+import {Http} from './utils.js'
 // Initial state of the app
-export const init = {
+export const init = [{
   searchForm,
-  isFetching: false,
+  isFetching: true,
   itemsLoaded: false,
   items: []
-}
+},
+  Http.fetch({
+    url: '/_design/items/_view/items',
+    action: receiveItems
+  })
+]

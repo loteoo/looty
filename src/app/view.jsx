@@ -4,13 +4,11 @@ import './style.css'
 
 import {h} from 'hyperapp'
 
-// Import actions
-import {setSearch} from './actions'
-
 // Import components
 import {SearchForm} from './components/SearchForm'
 
 import {Listing} from './components/Listing'
+
 // Root view
 export const view = state => (
   <div className="app">

@@ -290,15 +290,8 @@ select {
 }
 
 header {
-  padding: 6rem 0;
+  padding: 3rem 0;
   overflow: auto;
-  color: var(--background-color);
-  h1 {
-    color: inherit;
-  }
-  p {
-    margin-bottom: 0;
-  }
 }
 
 
