@@ -3,8 +3,8 @@ import {h} from 'hyperapp'
 // Import local actions
 import {SetValue, SubmitForm} from './actions'
 
-import {NiceInput} from '../common/NiceInput'
-import {ImageUploader} from '../common/ImageUploader'
+import {NiceInput} from '../../common/NiceInput'
+import {ImageUploader} from '../../common/ImageUploader'
 
 import './style.css'
 

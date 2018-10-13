@@ -4,10 +4,11 @@ import './style.css'
 
 import {h} from 'hyperapp'
 
-// Import components
-import {ItemForm} from './components/ItemForm'
+import {Navigate} from './actions'
 
+// Import components
 import {ListingPage} from './components/ListingPage'
+import {ShopPage} from './components/ShopPage'
 
 // Root view
 export const view = state => (
@@ -15,9 +16,9 @@ export const view = state => (
     <header>
       <div className="container">
         <nav className="top">
-          <a href="#">Looty</a>
-          <a href="#">Account</a>
-          <a href="#">Sell</a>
+          <a onclick={[Navigate, '/']}>Looty</a>
+          <a onclick={[Navigate, '/profile']}>Account</a>
+          <a onclick={[Navigate, '/shop']}>Sell</a>
         </nav>
       </div>
     </header>
@@ -26,9 +27,8 @@ export const view = state => (
 
         {state.path === '/' ? <ListingPage {...state.listingPage} /> : null}
 
-        {state.path === '/shop/' ? <ListingPage items={state.items} /> : null}
+        {state.path.startsWith('/shop') ? <ShopPage {...state.shopPage} /> : null}
         
-        <ItemForm {...state.itemForm} />
 
       </div>
     </main>
