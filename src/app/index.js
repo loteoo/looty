@@ -1,8 +1,11 @@
-// App dependencies
 import {app} from 'hyperapp'
-import {state} from './state'
-import {actions} from './actions'
+import {init} from './init'
 import {view} from './view'
 
-window.main = app(state, actions, view, document.body)
-window.main.init()
+// Initialize the app
+app({
+  init,
+  view,
+  subscriptions: console.log,
+  container: document.body
+})
