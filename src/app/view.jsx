@@ -5,10 +5,9 @@ import './style.css'
 import {h} from 'hyperapp'
 
 // Import components
-import {SearchForm} from './components/SearchForm'
 import {ItemForm} from './components/ItemForm'
 
-import {Listing} from './components/Listing'
+import {ListingPage} from './components/ListingPage'
 
 // Root view
 export const view = state => (
@@ -20,15 +19,17 @@ export const view = state => (
           <a href="#">Account</a>
           <a href="#">Sell</a>
         </nav>
-        <SearchForm {...state.searchForm} />
       </div>
     </header>
     <main>
       <div className="container">
-        <Listing items={state.items} />
+
+        {state.path === '/' ? <ListingPage {...state.listingPage} /> : null}
+
+        {state.path === '/shop/' ? <ListingPage items={state.items} /> : null}
         
         <ItemForm {...state.itemForm} />
-        
+
       </div>
     </main>
     <footer>
