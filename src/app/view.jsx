@@ -6,6 +6,7 @@ import {h} from 'hyperapp'
 
 // Import components
 import {SearchForm} from './components/SearchForm'
+import {ItemForm} from './components/ItemForm'
 
 import {Listing} from './components/Listing'
 
@@ -25,6 +26,9 @@ export const view = state => (
     <main>
       <div className="container">
         <Listing items={state.items} />
+        
+        <ItemForm {...state.itemForm} />
+        
       </div>
     </main>
     <footer>
