@@ -10,20 +10,23 @@ import {setSearch} from './actions'
 // Import components
 import {SearchForm} from './components/SearchForm'
 
+import {Listing} from './components/Listing'
 // Root view
 export const view = state => (
   <div className="app">
     <header>
-      <nav className="top">
-        <a href="#">Looty</a>
-        <a href="#">Account</a>
-        <a href="#">Sell</a>
-      </nav>
-      <SearchForm {...state.searchForm} />
+      <div className="container">
+        <nav className="top">
+          <a href="#">Looty</a>
+          <a href="#">Account</a>
+          <a href="#">Sell</a>
+        </nav>
+        <SearchForm {...state.searchForm} />
+      </div>
     </header>
     <main>
       <div className="container">
-      
+        <Listing items={state.items} />
       </div>
     </main>
     <footer>

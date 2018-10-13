@@ -292,8 +292,6 @@ select {
 header {
   padding: 6rem 0;
   overflow: auto;
-  background: linear-gradient(270deg,#6c63ff,#4641ff);
-  text-align: center;
   color: var(--background-color);
   h1 {
     color: inherit;
