@@ -7,18 +7,19 @@ import {h} from 'hyperapp'
 // Import actions
 import {setSearch} from './actions'
 
+// Import components
+import {SearchForm} from './components/SearchForm'
+
 // Root view
 export const view = state => (
   <div className="app">
     <header>
-      <nav className="container top">
+      <nav className="top">
         <a href="#">Looty</a>
         <a href="#">Account</a>
         <a href="#">Sell</a>
       </nav>
-      <form className="container search-form" method="post">
-        <input type="text" name="search" placeholder="Search" value={state.search} oninput={setSearch} />
-      </form>
+      <SearchForm {...state.searchForm} />
     </header>
     <main>
       <div className="container">
