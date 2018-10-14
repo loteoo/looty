@@ -35,9 +35,9 @@ export const view = state => (
 
         {/* {state.path ==='/shops' ? <BrowseShops shops={...state.shops} /> : null} */}
         
-        {state.path.startsWith('/shops/') ? <ShopPage shop={state.shops[state.path.split('/')[2]]} /> : null}
+        {state.path.startsWith('/shops/') ? <ShopPage shop={state.shops[state.path.split('/')[2]] || {}} user={state.user} /> : null}
 
-        {state.path.startsWith('/items/') ? <ItemPage item={state.items[state.path.split('/')[2]]} /> : null}
+        {state.path.startsWith('/items/') ? <ItemPage item={state.items[state.path.split('/')[2]] || {}} /> : null}
 
         {state.path === '/sell' ? <SellPage {...state.sellPage} /> : null}
 

@@ -3,23 +3,47 @@ import {h} from 'hyperapp'
 import './style.css'
 
 // Import local actions
-import {Up, Down} from './actions'
+import {SetValue, SubmitForm} from './actions'
 
-import {ItemForm} from './ItemForm'
+import {NiceInput} from '../common/NiceInput'
+import {ImageUploader} from '../common/ImageUploader'
 
 
-export const ShopPage = ({itemForm, count}) => (
+export const ShopPage = ({shop, user}) => (
   <div className="shop-page" key="shop-page">
-    <p>Component with namespaced state within the global state</p>
-    <h2>{count}</h2>
-    <button onclick={[Down]}>-</button>
-    <button onclick={[Up]}>+</button>
+    {/* <form className="item-form" key="item-form" method="post" onsubmit={SubmitForm}>
+      <h3>New item</h3>
+      
+      <NiceInput
+        label="Item name"
+        name="name"
+        value={name}
+        oninput={[SetValue, 'name']}
+        hint="Optional hint"
+      />
+      
+      <NiceInput
+        label="Price"
+        name="price"
+        value={price}
+        oninput={[SetValue, 'price']}
+        hint="Optional hint"
+      />
+      
+      <ImageUploader
+        label="Image"
+        name="image"
+        value={image}
+        oninput={[SetValue, 'image']}
+        hint="Optional hint"
+      />
+
+      {!submitted ? <button type="submit" pill>Submit</button> : <span>Submitted!</span>}
+    </form> */}
+    <p>Shop name: <b>{shop.title}</b></p>
     
-    <ItemForm {...itemForm} />
+    <p>{shop.user_id === user._id ? 'You own this shop!' : 'This shop is not yours'}</p>
+    
   </div>
 )
 
-/*
-import {ShopPage} from './components/ShopPage'
-<ShopPage {...state.shopPage} />
-*/

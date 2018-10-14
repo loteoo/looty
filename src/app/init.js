@@ -22,4 +22,5 @@ export const init = Navigate({
   // Cache
   items: {},
   shops: {}
-}, '/')
+
+}, window.location.pathname)

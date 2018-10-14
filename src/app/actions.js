@@ -8,6 +8,8 @@ import {Http} from './utils.js'
 
 export const Navigate = (prevState, path) => {
 
+  history.pushState(null, null, path);
+
   // Create our new state
   const state = {
     ...prevState,
@@ -23,6 +25,23 @@ export const Navigate = (prevState, path) => {
       Http.fetch({
         url: '/_design/items/_view/items',
         action: receiveItems
+      })
+    ]
+  }
+
+  // Loads items listing if necessary
+  if (state.path.startsWith('/shops/') && !state.shops[state.path.split('/')[2]]) {
+    return [
+      {
+        ...state,
+        shopPage: {
+          ...state.shopPage,
+          shopFetching: true
+        }
+      },
+      Http.fetch({
+        url: `/${state.path.split('/')[2]}`,
+        action: receiveShop
       })
     ]
   }
@@ -83,5 +102,20 @@ export const receiveUserShops = (state, response) => ({
     userShops: response.rows.map(shop => shop.value._id)
   },
   shops: response.rows.reduce((cache, shop) => ({...cache, [shop.value._id]: shop.value}), state.shops)
+})
+
+
+
+// Places the CouchDB response in the state
+export const receiveShop = (state, response) => ({
+  ...state,
+  shopPage: {
+    ...state.shopPage,
+    shopFetching: false
+  },
+  shops: {
+    ...state.shops,
+    [response._id]: response
+  }
 })
 
