@@ -8,6 +8,8 @@ import {setSearch, SubmitSearch} from './actions'
 
 import {NiceInput} from '../common/NiceInput'
 
+import {Navigate} from '../../actions'
+
 export const ListingPage = ({items, submitted, search, currentQuery, fetching, loaded}) => (
   <div className="ListingPage" key="ListingPage">
 
@@ -32,7 +34,7 @@ export const ListingPage = ({items, submitted, search, currentQuery, fetching, l
 
 const Item = ({item}) => (
   <div className="item" key={item._id}>
-    {item.title}
+    <a onclick={[Navigate, `/items/${item._id}`]}>{item.title}</a>
   </div>
 )
 

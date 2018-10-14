@@ -9,6 +9,7 @@ import {Navigate} from './actions'
 // Import components
 import {ListingPage} from './components/ListingPage'
 import {ShopPage} from './components/ShopPage'
+import {ItemPage} from './components/ItemPage'
 import {LoginPage} from './components/LoginPage'
 import {AccountPage} from './components/AccountPage'
 import {NewItemPage} from './components/NewItemPage'
@@ -35,10 +36,10 @@ export const view = state => (
         {state.path === '/account' ? <AccountPage user={state.user} shops={state.accountPage.userShops.map(id => state.shops[id])} {...state.accountPage} /> : null}
 
         {/* {state.path ==='/shops' ? <BrowseShops shops={...state.shops} /> : null} */}
-        
+
         {state.path.startsWith('/shops/') ? <ShopPage shop={state.shops[state.path.split('/')[2]] || {}} user={state.user} /> : null}
 
-        {state.path.startsWith('/items/') ? <ItemPage item={state.items[state.path.split('/')[2]] || {}} /> : null}
+        {state.path.startsWith('/items/') ? <ItemPage item={state.items[state.path.split('/')[2]] || {}} user={state.user} /> : null}
 
         {state.path === '/sell' ? <NewItemPage {...state.newItemPage} /> : null}
 
