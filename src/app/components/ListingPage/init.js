@@ -1,9 +1,8 @@
-import {searchForm} from './SearchForm/init.js'
-
 export const listingPage = {
-  searchForm,
+  search: '',
+  submitted: false,
   currentQuery: null,
-  isFetching: true,
-  itemsLoaded: false,
-  items: []
+  fetching: false,
+  loaded: false,
+  listing: []
 }

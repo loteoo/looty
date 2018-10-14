@@ -2,12 +2,27 @@ import {h} from 'hyperapp'
 
 import './style.css'
 
-import {SearchForm} from './SearchForm'
 
-export const ListingPage = ({items, searchForm}) => (
+// Import local actions
+import {setSearch, SubmitSearch} from './actions'
+
+import {NiceInput} from '../common/NiceInput'
+
+export const ListingPage = ({items, submitted, search, currentQuery, fetching, loaded}) => (
   <div className="ListingPage" key="ListingPage">
 
-    <SearchForm {...searchForm} />
+  <form className="search-form" key="search-form" method="post" onsubmit={SubmitSearch}>
+    
+    <NiceInput
+      label="Search"
+      name="search"
+      value={search}
+      oninput={setSearch}
+      hint="Optional hint"
+    />
+
+    {!submitted ? <button type="submit" pill>Submit</button> : <span>Submitted!</span>}
+  </form>
 
     <div className="grid">
       {items.map(item => <Item item={item} />)}

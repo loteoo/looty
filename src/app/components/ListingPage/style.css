@@ -11,4 +11,10 @@
     border-radius: 0.2rem;
   }
   
+  .search-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
 }

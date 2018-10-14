@@ -5,8 +5,6 @@
 
 import {Http} from './utils.js'
 
-import {receiveShops} from './components/AccountPage/actions.js'
-
 
 export const Navigate = (prevState, path) => {
 
@@ -17,16 +15,63 @@ export const Navigate = (prevState, path) => {
   }
 
   // Trigger stuff from navigations
+
+  // Loads items listing if necessary
+  if (state.path === '/' && !state.listingPage.loaded &&  !state.listingPage.fetching) {
+    return [
+      state,
+      Http.fetch({
+        url: '/_design/items/_view/items',
+        action: receiveItems
+      })
+    ]
+  }
+  
+  // Loads the user's shops
   if (state.path === '/account' && !state.accountPage.shopsLoaded &&  !state.accountPage.shopsFetching) {
     return [
       state,
       Http.fetch({
         url: `/_design/shops/_view/by_user_id?startkey="${state.user._id}"&endkey="${state.user._id}"`,
-        action: receiveShops
+        action: receiveUserShops
       })
     ]
   }
 
   return state
 }
+
+
+
+
+
+
+
+
+// Places the CouchDB response in the state
+export const receiveItems = (state, response) => ({
+  ...state,
+  listingPage: {
+    ...state.listingPage,
+    currentQuery: state.listingPage.search,
+    search: '',
+    fetching: false,
+    loaded: true,
+    listing: response.rows.map(item => item.value._id)
+  },
+  items: response.rows.reduce((cache, item) => ({...cache, [item.value._id]: item.value}), state.items)
+})
+
+
+
+// Places the CouchDB response in the state
+export const receiveUserShops = (state, response) => ({
+  ...state,
+  accountPage: {
+    shopsFetching: false,
+    shopsLoaded: true,
+    userShops: response.rows.map(shop => shop.value._id)
+  },
+  shops: response.rows.reduce((cache, shop) => ({...cache, [shop.value._id]: shop.value}), state.shops)
+})
 

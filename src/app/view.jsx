@@ -27,7 +27,7 @@ export const view = state => (
     <main>
       <div className="container">
 
-        {state.path === '/' ? <ListingPage {...state.listingPage} /> : null}
+        {state.path === '/' ? <ListingPage items={state.listingPage.listing.map(itemId => state.items[itemId])} {...state.listingPage} /> : null}
 
         {state.path === '/login' ? <LoginPage {...state.loginPage} /> : null}
 
