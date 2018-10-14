@@ -6,11 +6,16 @@ export const scope = (state, nestedState) => ({
 
 
 
-
-// Places the CouchDB response in the state
-export const receiveShops = (state, response) => scope(state, {
+export const SetValue = (state, key, ev) => scope(state, {
   ...state.accountPage,
-  shopsFetching: false,
-  shopsLoaded: true,
-  shops: response.rows.map(item => item.value)
+  [key]: ev.target.value
 })
+
+export const SubmitForm = (state, ev) => {
+  ev.preventDefault();
+  // alert('Submitted!\nForm state: \n\n' + JSON.stringify(state.accountPage, null, 2));
+  return scope(state, {
+    ...state.accountPage,
+    submitted: true
+  })
+}

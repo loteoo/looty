@@ -3,4 +3,19 @@
   padding: 1rem;
   border: 1px solid var(--border-color);
   border-radius: 0.2rem;
+
+  .account-form {
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.2rem;
+    text-align: center;
+    >p {
+      text-align: left;
+    }
+    >button {
+      margin: 0.25rem;
+    }
+  }
+  
 }

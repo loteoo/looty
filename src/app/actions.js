@@ -45,6 +45,16 @@ export const Navigate = (prevState, path) => {
 
 
 
+// Places the CouchDB login response in the state
+export const receiveUser = (state, response) => (
+  response.rows.length > 0
+    ? {
+      ...state,
+      path: '/account',
+      user: response.rows[0].value
+    }
+    : state
+)
 
 
 

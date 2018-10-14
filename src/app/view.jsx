@@ -27,17 +27,17 @@ export const view = state => (
     <main>
       <div className="container">
 
-        {state.path === '/' ? <ListingPage items={state.listingPage.listing.map(itemId => state.items[itemId])} {...state.listingPage} /> : null}
+        {state.path === '/' ? <ListingPage items={state.listingPage.listing.map(id => state.items[id])} {...state.listingPage} /> : null}
 
         {state.path === '/login' ? <LoginPage {...state.loginPage} /> : null}
 
-        {state.path === '/account' ? <AccountPage user={state.user} {...state.accountPage} /> : null}
+        {state.path === '/account' ? <AccountPage user={state.user} shops={state.accountPage.userShops.map(id => state.shops[id])} {...state.accountPage} /> : null}
 
         {/* {state.path ==='/shops' ? <BrowseShops shops={...state.shops} /> : null} */}
         
-        {state.path.startsWith('/shops/') ? <ShopPage shop={state.shops['ID HERE']} /> : null}
+        {state.path.startsWith('/shops/') ? <ShopPage shop={state.shops[state.path.split('/')[2]]} /> : null}
 
-        {state.path.startsWith('/items/') ? <ItemPage item={state.items['ID HERE']} /> : null}
+        {state.path.startsWith('/items/') ? <ItemPage item={state.items[state.path.split('/')[2]]} /> : null}
 
         {state.path === '/sell' ? <SellPage {...state.sellPage} /> : null}
 

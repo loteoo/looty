@@ -1,4 +1,5 @@
 import {Http} from '../../utils.js'
+import {receiveUser} from '../../actions.js'
 
 export const scope = (state, nestedState) => ({
   ...state,
@@ -9,19 +10,6 @@ export const SetValue = (state, key, ev) => scope(state, {
   ...state.loginPage,
   [key]: ev.target.value
 })
-
-
-// Places the CouchDB login response in the state
-export const receiveUser = (state, response) => (
-  response.rows.length > 0
-    ? {
-      ...state,
-      path: '/shops',
-      user: response.rows[0].value
-    }
-    : state
-)
-
 
 
 export const SubmitForm = (state, ev) => {
