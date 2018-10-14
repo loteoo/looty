@@ -36,4 +36,3 @@ export const SubmitForm = (state, ev) => {
     })
   ]
 }
-// /_design/shops/_view/by_user_id?startkey="898b4c3d4d2cb94bc0aabc8e2a011bf5"&endkey="898b4c3d4d2cb94bc0aabc8e2a011bf5"

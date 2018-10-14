@@ -14,8 +14,8 @@ export const init = [{
     "username": "loteoo",
     "password": "test"
   },
-  shopPage,
   listingPage,
+  shopPage,
   loginPage,
   accountPage
 },

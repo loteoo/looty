@@ -29,11 +29,17 @@ export const view = state => (
 
         {state.path === '/' ? <ListingPage {...state.listingPage} /> : null}
 
-        {state.path.startsWith('/shops') ? <ShopPage {...state.shopPage} /> : null}
-
         {state.path === '/login' ? <LoginPage {...state.loginPage} /> : null}
 
         {state.path === '/account' ? <AccountPage user={state.user} {...state.accountPage} /> : null}
+
+        {/* {state.path ==='/shops' ? <BrowseShops shops={...state.shops} /> : null} */}
+        
+        {state.path.startsWith('/shops/') ? <ShopPage shop={state.shops['ID HERE']} /> : null}
+
+        {state.path.startsWith('/items/') ? <ItemPage item={state.items['ID HERE']} /> : null}
+
+        {state.path === '/sell' ? <SellPage {...state.sellPage} /> : null}
 
       </div>
     </main>
