@@ -9,6 +9,7 @@ import {Navigate} from './actions'
 // Import components
 import {ListingPage} from './components/ListingPage'
 import {ShopPage} from './components/ShopPage'
+import {LoginPage} from './components/LoginPage'
 
 // Root view
 export const view = state => (
@@ -18,7 +19,7 @@ export const view = state => (
         <nav className="top">
           <a onclick={[Navigate, '/']}>Looty</a>
           <a onclick={[Navigate, '/profile']}>Account</a>
-          <a onclick={[Navigate, '/shop']}>Sell</a>
+          <a onclick={[Navigate, state.user ? '/shops' : '/login']}>Sell</a>
         </nav>
       </div>
     </header>
@@ -27,8 +28,9 @@ export const view = state => (
 
         {state.path === '/' ? <ListingPage {...state.listingPage} /> : null}
 
-        {state.path.startsWith('/shop') ? <ShopPage {...state.shopPage} /> : null}
-        
+        {state.path.startsWith('/shops') ? <ShopPage {...state.shopPage} /> : null}
+
+        {state.path === '/login' ? <LoginPage {...state.loginPage} /> : null}
 
       </div>
     </main>

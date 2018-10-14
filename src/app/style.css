@@ -285,10 +285,6 @@ select {
     Root view styling
 \*------------------------------------*/
 
-.app {
-  
-}
-
 header {
   padding: 3rem 0;
   overflow: auto;
