@@ -15,7 +15,7 @@ export const setSearch = (state, ev) => scope(state, {
 
 export const SubmitSearch = (state, ev) => {
   ev.preventDefault();
-  alert('Submitted!\nForm state: \n\n' + JSON.stringify(state.listingPage.searchForm, null, 2));
+  // alert('Submitted!\nForm state: \n\n' + JSON.stringify(state.listingPage.searchForm, null, 2));
   return scope(state, {
     ...state.listingPage.searchForm,
     submitted: true
