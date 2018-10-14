@@ -1,3 +1,4 @@
+import {newItemPage} from './components/NewItemPage/init.js'
 import {accountPage} from './components/AccountPage/init.js'
 import {loginPage} from './components/LoginPage/init.js'
 import {shopPage} from './components/ShopPage/init.js'
@@ -17,7 +18,8 @@ export const init = Navigate({
   listingPage,
   shopPage,
   loginPage,
-  accountPage,
+  accountPage,  
+  newItemPage,
 
   // Cache
   items: {},
