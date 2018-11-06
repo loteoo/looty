@@ -18,3 +18,42 @@ export const SubmitForm = (state, ev) => {
     submitted: true
   })
 }
+
+
+
+
+export const OnMount = (state, ev) => {
+  if (!state.shops[state.path.split('/')[2]]) {
+    return [
+      {
+        ...state,
+        shopPage: {
+          ...state.shopPage,
+          shopFetching: true
+        }
+      },
+      Http.fetch({
+        url: `/${state.path.split('/')[2]}`,
+        action: ReceiveShop
+      })
+    ]
+  }
+  return state
+}
+
+
+
+
+// Places the CouchDB response in the state
+export const ReceiveShop = (state, response) => ({
+  ...state,
+  shopPage: {
+    ...state.shopPage,
+    shopFetching: false
+  },
+  shops: {
+    ...state.shops,
+    [response._id]: response
+  }
+})
+

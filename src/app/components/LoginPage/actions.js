@@ -1,5 +1,5 @@
 import {Http} from '../../utils.js'
-import {receiveUser} from '../../actions.js'
+
 
 export const scope = (state, nestedState) => ({
   ...state,
@@ -14,13 +14,32 @@ export const SetValue = (state, key, ev) => scope(state, {
 
 export const SubmitForm = (state, ev) => {
   ev.preventDefault();
-  return [scope(state, {
-    ...state.loginPage,
-    submitted: true,
-  }),
+  return [
+    scope(state, {
+      ...state.loginPage,
+      submitted: true,
+    }),
     Http.fetch({
       url: `/_design/users/_view/by_username?startkey=["${state.loginPage.username}","${state.loginPage.password}"]&endkey=["${state.loginPage.username}","${state.loginPage.password}"]`,
-      action: receiveUser
+      action: ReceiveUser
     })
   ]
 }
+
+
+// Places the CouchDB login response in the state
+export const ReceiveUser = (state, response) => (
+  response.rows.length > 0
+    ? {
+      ...state,
+      user: response.rows[0].value._id,
+      path: '/account',
+      users: {
+        ...state.users,
+        [response.rows[0].value._id]: response.rows[0].value
+      }
+    }
+    : state
+)
+
+

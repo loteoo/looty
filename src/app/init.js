@@ -8,13 +8,7 @@ import {Navigate} from './actions.js'
 // Initial state of the app
 export const init = Navigate({
   path: '/',
-  user: {
-    "_id": "898b4c3d4d2cb94bc0aabc8e2a011bf5",
-    "_rev": "1-cc610b717f601ca10e1dbed8b53ff927",
-    "type": "user",
-    "username": "loteoo",
-    "password": "test"
-  },
+  user: null,
   listingPage,
   shopPage,
   loginPage,
@@ -23,6 +17,7 @@ export const init = Navigate({
 
   // Cache
   items: {},
-  shops: {}
+  shops: {},
+  users: {}
 
 }, window.location.pathname)

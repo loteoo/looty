@@ -4,8 +4,6 @@ import './style.css'
 
 import {h} from 'hyperapp'
 
-import {Navigate} from './actions'
-
 // Import components
 import {ListingPage} from './components/ListingPage'
 import {ShopPage} from './components/ShopPage'
@@ -31,7 +29,7 @@ export const view = state => (
 
         {state.path === '/login' ? <LoginPage {...state.loginPage} /> : null}
 
-        {state.path === '/account' ? <AccountPage user={state.user} shops={state.accountPage.userShops.map(id => state.shops[id])} {...state.accountPage} /> : null}
+        {state.path === '/account' ? <AccountPage user={state.users[state.user]} shops={state.accountPage.userShops.map(id => state.shops[id])} {...state.accountPage} /> : null}
 
         {state.path === '/' ? <ListingPage items={state.listingPage.listing.map(id => state.items[id])} {...state.listingPage} /> : null}
 

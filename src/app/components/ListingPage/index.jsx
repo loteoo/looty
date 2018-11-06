@@ -4,27 +4,26 @@ import './style.css'
 
 
 // Import local actions
-import {setSearch, SubmitSearch} from './actions'
+import {SetSearch, SubmitSearch, OnMount} from './actions'
 
 import {NiceInput} from '../common/NiceInput'
 
-import {Navigate} from '../../actions'
 
 export const ListingPage = ({items, submitted, search, currentQuery, fetching, loaded}) => (
-  <div className="ListingPage" key="ListingPage">
+  <div className="ListingPage" key="ListingPage" onmount={OnMount}>
 
-  <form className="search-form" key="search-form" method="post" onsubmit={SubmitSearch}>
-    
-    <NiceInput
-      label="Search"
-      name="search"
-      value={search}
-      oninput={setSearch}
-      hint="Optional hint"
-    />
+    <form className="search-form" key="search-form" method="post" onsubmit={SubmitSearch}>
+      
+      <NiceInput
+        label="Search"
+        name="search"
+        value={search}
+        oninput={SetSearch}
+        hint="Optional hint"
+      />
 
-    {!submitted ? <button type="submit" pill>Submit</button> : <span>Submitted!</span>}
-  </form>
+      {!submitted ? <button type="submit" pill>Submit</button> : <span>Submitted!</span>}
+    </form>
 
     <div className="grid">
       {items.map(item => <Item item={item} />)}

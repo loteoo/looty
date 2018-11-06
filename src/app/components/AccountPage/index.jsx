@@ -5,12 +5,12 @@ import './style.css'
 
 import {Navigate} from '../../actions'
 
-import {SetValue, SubmitForm} from './actions'
+import {SetValue, SubmitForm, OnMount} from './actions'
 
 import {NiceInput} from '../common/NiceInput'
 
 export const AccountPage = ({user, shops, submitted, newUsername, shopsFetching, shopsLoaded}) => (
-  <div className="account-page" key="account-page" method="post" >
+  <div className="account-page" key="account-page" method="post" onmount={OnMount}>
   
     <p>User: {user.username}</p>
 
