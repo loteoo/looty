@@ -2,7 +2,6 @@ import {h} from 'hyperapp'
 
 import './style.css'
 
-import {AccountForm} from './AccountForm'
 
 import {Navigate} from '../../actions'
 
@@ -31,7 +30,7 @@ export const AccountPage = ({user, shops, submitted, newUsername, shopsFetching,
 
 
     <p>My shops</p>
-    {shops.map(shop => <a onclick={[Navigate, `/shops/${shop._id}`]}>{shop.title}</a>)}
+    {shops.map(shop => <a href={`/#/shops/${shop._id}`}>{shop.title}</a>)}
 
     <button type="submit" pill>Submit</button>
   </div>

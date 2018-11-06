@@ -20,9 +20,9 @@ export const view = state => (
     <header>
       <div className="container">
         <nav className="top">
-          <a onclick={[Navigate, '/']}>Looty</a>
-          <a onclick={[Navigate, state.user ? '/account' : '/login']}>Account</a>
-          <a onclick={[Navigate, state.user ? '/sell' : '/login']}>Sell</a>
+          <a href="/#/">Looty</a>
+          <a href={state.user ? '/#/account' : '/#/login'}>Account</a>
+          <a href={state.user ? '/#/sell' : '/#/login'}>Sell</a>
         </nav>
       </div>
     </header>

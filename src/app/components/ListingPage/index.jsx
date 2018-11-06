@@ -34,7 +34,7 @@ export const ListingPage = ({items, submitted, search, currentQuery, fetching, l
 
 const Item = ({item}) => (
   <div className="item" key={item._id}>
-    <a onclick={[Navigate, `/items/${item._id}`]}>{item.title}</a>
+    <a href={`/#/items/${item._id}`}>{item.title}</a>
   </div>
 )
 

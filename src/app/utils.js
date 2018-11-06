@@ -33,3 +33,28 @@ export const Http = {
     action: props.action
   })
 };
+
+
+// Listen to hash changes in the browser
+export const LocationChanged = props => ({
+  effect: (props, dispatch) => {
+    const eventListener = event => {
+      dispatch(props.action, window.location.hash.substring(1))
+    }
+    addEventListener("hashchange", eventListener)
+    return () => removeEventListener("hashchange", eventListener)
+  },
+  action: props.action
+})
+
+
+// DOM custom event (hyperapp will treat this like any other event)
+export const enableOnMountDomEvent = () => {
+  const mountEvent = new Event('mount')
+  const realCreateElement = document.createElement.bind(document)
+  document.createElement = (name) => {
+    let el = realCreateElement(name)
+    setTimeout(() => el.dispatchEvent(mountEvent))
+    return el
+  }
+}

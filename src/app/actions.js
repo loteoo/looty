@@ -8,8 +8,6 @@ import {Http} from './utils.js'
 
 export const Navigate = (prevState, path) => {
 
-  history.pushState(null, null, path);
-
   // Create our new state
   const state = {
     ...prevState,

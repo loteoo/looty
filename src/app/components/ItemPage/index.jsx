@@ -11,7 +11,7 @@ import {Navigate} from '../../actions'
 export const ItemPage = ({item, user}) => (
   <div className="item-page" key="item-page">
   
-    <a onclick={[Navigate, item.shop_id ? `/shops/${item.shop_id}` : `/users/${item.user_id}`]}>See seller</a>
+    <a href={item.shop_id ? `/#/shops/${item.shop_id}` : `/#/users/${item.user_id}`}>See seller</a>
 
     <p>Item name: <b>{item.title}</b></p>
     
