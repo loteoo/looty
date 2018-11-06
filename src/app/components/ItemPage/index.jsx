@@ -5,8 +5,6 @@ import './style.css'
 // Import local actions
 import {SetValue, SubmitForm} from './actions'
 
-import {Navigate} from '../../actions'
-
 
 export const ItemPage = ({item, user}) => (
   <div className="item-page" key="item-page">

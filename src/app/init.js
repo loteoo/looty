@@ -20,4 +20,4 @@ export const init = Navigate({
   shops: {},
   users: {}
 
-}, window.location.pathname)
+}, window.location.hash.substring(1))
