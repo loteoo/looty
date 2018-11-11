@@ -10,29 +10,32 @@ import {NiceInput} from '../common/NiceInput'
 
 
 export const ListingPage = ({items, submitted, search, currentQuery, fetching, loaded}) => (
-  <div className="ListingPage" key="ListingPage" onmount={OnMount}>
+  <div class="ListingPage" key="ListingPage" onmount={OnMount}>
 
-    <form className="search-form" key="search-form" method="post" onsubmit={SubmitSearch}>
+    <div class="map">
+
+    </div>
+
+    <form class="search-form" key="search-form" method="post" onsubmit={SubmitSearch}>
       
-      <NiceInput
-        label="Search"
+      <input
         name="search"
         value={search}
         oninput={SetSearch}
-        hint="Optional hint"
       />
+      
+      <button type="submit" pill>Submit</button>
 
-      {!submitted ? <button type="submit" pill>Submit</button> : <span>Submitted!</span>}
     </form>
 
-    <div className="grid">
+    <div class="listing">
       {items.map(item => <Item item={item} />)}
     </div>
   </div>
 )
 
 const Item = ({item}) => (
-  <div className="item" key={item._id}>
+  <div class="item" key={item._id}>
     <a href={`/#/items/${item._id}`}>{item.title}</a>
   </div>
 )

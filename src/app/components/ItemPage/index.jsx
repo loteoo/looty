@@ -7,7 +7,7 @@ import {SetValue, SubmitForm} from './actions'
 
 
 export const ItemPage = ({item, user}) => (
-  <div className="item-page" key="item-page">
+  <div class="item-page" key="item-page">
   
     <a href={item.shop_id ? `/#/shops/${item.shop_id}` : `/#/users/${item.user_id}`}>See seller</a>
 

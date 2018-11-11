@@ -9,7 +9,7 @@ import {ImageUploader} from '../common/ImageUploader'
 import './style.css'
 
 export const NewItemPage = ({name, price, image, submitted}) => (
-  <form className="new-item-page" key="new-item-page" method="post" onsubmit={SubmitForm}>
+  <form class="new-item-page" key="new-item-page" method="post" onsubmit={SubmitForm}>
     <h3>New item</h3>
     
     <NiceInput

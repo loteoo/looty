@@ -4,8 +4,8 @@ import cc from 'classcat'
 import './style.css'
 
 export const NiceInput = ({label = label || 'Label', name = name || 'name', type = type || 'text', placeholder = placeholder || ' ', required, hint, ...rest}) => (
-  <div className={cc(['nice-input', name])} key={name}>
-    {hint ? <p className="hint">{hint}</p> : null}
+  <div class={cc(['nice-input', name])} key={name}>
+    {hint ? <p class="hint">{hint}</p> : null}
     <input type={type} name={name} id={name} placeholder={placeholder} required={required} {...rest} />
     <label for={name}>{label}{required ? ' *' : null}</label>
   </div>
