@@ -29,6 +29,7 @@ const params = {
 kijiji.search(params, options).then(function(ads) {
 
   ads.forEach(ad => {
+    ad.type = 'item'
     looty.insert(ad).then((body) => {
       console.log(body);
     });
