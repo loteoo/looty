@@ -19,5 +19,9 @@
     "postcss-nested": "^3.0.0",
     "rucksack-css": "^1.0.2",
     "sanitize.css": "^6.0.0"
+  },
+  "dependencies": {
+    "kijiji-scraper": "^4.0.4",
+    "nano": "^7.1.0"
   }
 }
