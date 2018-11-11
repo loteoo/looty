@@ -6,10 +6,7 @@ import {h} from 'hyperapp'
 
 // Import components
 import {ListingPage} from './components/ListingPage'
-import {ShopPage} from './components/ShopPage'
 import {ItemPage} from './components/ItemPage'
-import {LoginPage} from './components/LoginPage'
-import {AccountPage} from './components/AccountPage'
 import {NewItemPage} from './components/NewItemPage'
 
 // Root view
