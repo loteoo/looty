@@ -2,14 +2,14 @@
 import {Http} from '../../utils.js'
 
 
-export const scope = (state, nestedState) => ({
+export const lens = (state, nestedState) => ({
   ...state,
   listingPage: nestedState
 })
 
 
 // Sets the new item input value in the state
-export const SetSearch = (state, ev) => scope(state, {
+export const SetSearch = (state, ev) => lens(state, {
   ...state.listingPage,
   search: ev.target.value
 })
@@ -17,7 +17,7 @@ export const SetSearch = (state, ev) => scope(state, {
 export const SubmitSearch = (state, ev) => {
   ev.preventDefault();
   // alert('Submitted!\nForm state: \n\n' + JSON.stringify(state.listingPage, null, 2));
-  return scope(state, {
+  return lens(state, {
     ...state.listingPage,
     submitted: true
   })

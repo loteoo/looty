@@ -1,12 +1,12 @@
 import {Http} from '../../utils.js'
 
 
-export const scope = (state, nestedState) => ({
+export const lens = (state, nestedState) => ({
   ...state,
   loginPage: nestedState
 })
 
-export const SetValue = (state, key, ev) => scope(state, {
+export const SetValue = (state, key, ev) => lens(state, {
   ...state.loginPage,
   [key]: ev.target.value
 })
@@ -15,7 +15,7 @@ export const SetValue = (state, key, ev) => scope(state, {
 export const SubmitForm = (state, ev) => {
   ev.preventDefault();
   return [
-    scope(state, {
+    lens(state, {
       ...state.loginPage,
       submitted: true,
     }),

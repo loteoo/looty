@@ -1,11 +1,11 @@
 
-export const scope = (state, nestedState) => ({
+export const lens = (state, nestedState) => ({
   ...state,
   shopPage: nestedState
 })
 
 
-export const SetValue = (state, key, ev) => scope(state, {
+export const SetValue = (state, key, ev) => lens(state, {
   ...state.shopPage,
   [key]: ev.target.value
 })
@@ -13,7 +13,7 @@ export const SetValue = (state, key, ev) => scope(state, {
 export const SubmitForm = (state, ev) => {
   ev.preventDefault();
   alert('Submitted!\nForm state: \n\n' + JSON.stringify(state, null, 2));
-  return scope(state, {
+  return lens(state, {
     ...state.shopPage,
     submitted: true
   })
