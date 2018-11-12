@@ -24,4 +24,16 @@
     border-radius: 0.2rem;
   }
 
+
+  .map-marker-info-window {
+    display: flex;
+    align-items: center;
+    img {
+      max-width: 8rem;
+      margin-right: 1rem;
+    }
+    .info {
+      
+    }
+  }
 }

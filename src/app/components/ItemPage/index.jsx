@@ -20,7 +20,7 @@ export const ItemPage = ({item}) => (
         {item.images.map(url => <img src={url} alt={item.title} />)}
       </div>
 
-      <a href={item.url}>View on kijiji</a>
+      <a href={item.url} target="_blank">View on kijiji</a>
       
       <pre>{JSON.stringify(item, null, 2)}</pre>
     </div>

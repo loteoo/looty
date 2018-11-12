@@ -17,7 +17,7 @@ const looty = nano.db.use('looty');
 
 
 const options = {
-  minResults: 40
+  minResults: 2048
 };
 
 const params = {

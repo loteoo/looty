@@ -30,7 +30,7 @@ export const OnMount = (state, ev) => {
     return [
       state,
       Http.fetch({
-        url: '/_design/all_items/_view/all_items',
+        url: '/_design/all_items/_view/all_items?limit=500',
         action: ReceiveItems
       })
     ]
@@ -53,26 +53,44 @@ export const OnMapMount = (state, ev) => {
     })
   }
 
-  nextState.markers =  Object.keys(state.items).map(itemId => {
+  // Build markers for each item
+  Object.keys(state.items).map(itemId => {
+
     let item = state.items[itemId]
+
     let marker = new google.maps.Marker({
       title: item.title,
       position: {
         lat: item.attributes.location.latitude,
         lng: item.attributes.location.longitude
       },
-      icon: item.image,
+      // icon: item.image,
       map: nextState.map
     })
 
-    marker.addListener('click', () => {
-      window.location.hash = '/items/' + item._id
+    let infowindow = new google.maps.InfoWindow({
+      content: /*html*/`
+        <a href="#/items/${item._id}" class="map-marker-info-window">
+          <img src="${item.image}" alt="${item.title}">
+          <div class="info">
+            <h4>${item.title}</h4>
+            <p>${item.description}</p>
+          </div>
+        </a>
+      `
     })
+
+
+
+    marker.addListener('click', (event, test) => {
+      infowindow.open(nextState.map, marker)
+    })
+
+    
+
 
     return marker
   })
-
-  console.log(nextState.markers);
   
 
   return nextState
