@@ -3,17 +3,17 @@ import {h} from 'hyperapp'
 import './style.css'
 
 // Import local actions
-import {SetValue, SubmitForm} from './actions'
+import {SetValue, SubmitForm, OnMount} from './actions'
 
 
-export const ItemPage = ({item, user}) => (
-  <div class="item-page" key="item-page">
+export const ItemPage = ({item}) => (
+  <div class="item-page" key="item-page" onmount={OnMount}>
   
-    <a href={item.shop_id ? `/#/shops/${item.shop_id}` : `/#/users/${item.user_id}`}>See seller</a>
-
-    <p>Item name: <b>{item.title}</b></p>
-    
-    <p>{item.user_id === user._id ? 'You own this item!' : 'This item is not yours'}</p>
+    <div className="container">
+      <p>Item name: <b>{item.title}</b></p>
+      
+      <pre>{JSON.stringify(item, null, 2)}</pre>
+    </div>
     
   </div>
 )

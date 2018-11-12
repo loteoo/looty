@@ -29,7 +29,7 @@ export const OnMount = (state, ev) => {
     return [
       state,
       Http.fetch({
-        url: '/_design/items/_view/items',
+        url: '/_design/all_items/_view/all_items',
         action: ReceiveItems
       })
     ]

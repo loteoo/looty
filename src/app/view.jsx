@@ -23,7 +23,7 @@ export const view = state => (
     </header>
     <main>
       {state.path === '/' ? <ListingPage items={state.listingPage.listing.map(id => state.items[id])} {...state.listingPage} /> : null}
-      {state.path.startsWith('/items/') ? <ItemPage item={state.items[state.path.split('/')[2]] || {}} user={state.users[state.user] || {}} /> : null}
+      {state.path.startsWith('/items/') ? <ItemPage item={state.items[state.path.split('/')[2]] || {}} /> : null}
       {state.path === '/sell' ? <NewItemPage {...state.newItemPage} /> : null}
     </main>
     <footer>
