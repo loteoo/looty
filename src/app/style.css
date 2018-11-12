@@ -4,6 +4,67 @@
 
 \*------------------------------------*/
 
+@font-face {
+  font-family: 'CircularStd';
+  src: url('../assets/CircularStd/CircularStd-Book.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CircularStd';
+  src: url('../assets/CircularStd/CircularStd-Medium.otf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CircularStd';
+  src: url('../assets/CircularStd/CircularStd-Bold.otf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CircularStd';
+  src: url('../assets/CircularStd/CircularStd-Black.otf');
+  font-weight: 900;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Nunito Light'), local('Nunito-Light'), url(https://fonts.gstatic.com/s/nunito/v9/XRXW3I6Li01BKofAnsSUYevI.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Nunito Regular'), local('Nunito-Regular'), url(https://fonts.gstatic.com/s/nunito/v9/XRXV3I6Li01BKofINeaB.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Nunito Bold'), local('Nunito-Bold'), url(https://fonts.gstatic.com/s/nunito/v9/XRXW3I6Li01BKofAjsOUYevI.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+
+:root {
+	--text-color: #FFFFFF;
+	--background-color: #323232;
+	--accent-color: #06D19C;
+}
+
 
 
 /* === Global variables === */
@@ -24,7 +85,7 @@
 
 /* === Default cascade === */
 html {
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: 'Nunito', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: responsive 14px 18px;
   font-range: 420px 1280px;
   color: var(--text-color);
@@ -54,6 +115,7 @@ p {
 }
 
 h1, h2, h3, h4 {
+  font-family: 'CircularStd', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: var(--emphasis-text-color);
   margin: 1.414em 0 0.5em;
 }
