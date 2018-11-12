@@ -1,6 +1,5 @@
 
 import {Http} from '../../utils.js'
-import { addListener } from 'cluster';
 
 
 export const lens = (state, nestedState) => ({
@@ -45,6 +44,7 @@ export const OnMapMount = (state, ev) => {
     ...state,
     map: new google.maps.Map(ev.target, {
       gestureHandling: 'greedy',
+      disableDefaultUI: true,
       center: {
         lat: 45.5260261,
         lng: -73.5775953

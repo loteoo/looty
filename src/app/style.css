@@ -8,12 +8,12 @@
 
 /* === Global variables === */
 :root {
-	--text-color: #525f7f;
-	--emphasis-text-color: #2e374d;
-	--background-color: #ffffff;
-	--alt-background-color: #f7f7f7;
-  --accent-color: #6C63FF;
-  --alt-accent-color: #4641FF;
+	--text-color: #A1AAB3;
+	--emphasis-text-color: #182430;
+	--background-color: #F5FAF8;
+	--alt-background-color: #EDF1F2;
+  --accent-color: #1A72ED;
+  --alt-accent-color: #186CE0;
   --border-color: #eee;
 
   --success-color: #06d19c;
@@ -54,22 +54,12 @@ p {
 }
 
 h1, h2, h3, h4 {
-  margin: 1.414em 0 0.5em;
-  line-height: 1.35;
   color: var(--emphasis-text-color);
-  font-weight: 400;
-}
-
-h5, h6 {
   margin: 1.414em 0 0.5em;
-  line-height: 1.4;
-  color: inherit;
-  font-weight: 400;
 }
 
 h1 {
   font-size: 2.074em;
-  margin-top: 0;
 }
 
 h2 {
@@ -80,7 +70,7 @@ h3 {
   font-size: 1.44em;
 }
 
-h4 {
+h4, h5 {
   font-size: 1.2em;
 }
 
@@ -276,12 +266,6 @@ select {
     Root view styling
 \*------------------------------------*/
 
-header {
-  padding: 3rem 0;
-  overflow: auto;
-}
-
-
-main {
-  padding: 3rem 0;
+.app {
+  position: relative;
 }
