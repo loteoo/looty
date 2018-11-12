@@ -70,7 +70,6 @@ export const OnMapMount = (state, ev) => {
     })
 
     return marker
-
   })
 
   console.log(nextState.markers);
