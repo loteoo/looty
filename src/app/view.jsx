@@ -28,8 +28,7 @@ export const view = state => (
     </main>
     <footer>
       <div class="container">
-        <h4>State: </h4>
-        <pre>{JSON.stringify(state, null, 2)}</pre>
+        footer
       </div>
     </footer>
   </div>

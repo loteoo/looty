@@ -1,5 +1,6 @@
 
 import {Http} from '../../utils.js'
+import { addListener } from 'cluster';
 
 
 export const lens = (state, nestedState) => ({
@@ -35,6 +36,47 @@ export const OnMount = (state, ev) => {
     ]
   }
   return state
+}
+
+
+export const OnMapMount = (state, ev) => {
+  
+  const nextState = {
+    ...state,
+    map: new google.maps.Map(ev.target, {
+      gestureHandling: 'greedy',
+      center: {
+        lat: 45.5260261,
+        lng: -73.5775953
+      },
+      zoom: 12
+    })
+  }
+
+  nextState.markers =  Object.keys(state.items).map(itemId => {
+    let item = state.items[itemId]
+    let marker = new google.maps.Marker({
+      title: item.title,
+      position: {
+        lat: item.attributes.location.latitude,
+        lng: item.attributes.location.longitude
+      },
+      icon: item.image,
+      map: nextState.map
+    })
+
+    marker.addListener('click', () => {
+      window.location.hash = '/items/' + item._id
+    })
+
+    return marker
+
+  })
+
+  console.log(nextState.markers);
+  
+
+  return nextState
 }
 
 

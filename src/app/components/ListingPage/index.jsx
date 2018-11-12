@@ -4,15 +4,15 @@ import './style.css'
 
 
 // Import local actions
-import {SetSearch, SubmitSearch, OnMount} from './actions'
+import {SetSearch, SubmitSearch, OnMount, OnMapMount} from './actions'
 
 import {NiceInput} from '../common/NiceInput'
 
 
 export const ListingPage = ({items, submitted, search, currentQuery, fetching, loaded}) => (
-  <div class="ListingPage" key="ListingPage" onmount={OnMount}>
+  <div class="listing-page" key="listing-page" onmount={OnMount}>
 
-    <div class="map">
+    <div class="map" onmount={OnMapMount}>
 
     </div>
 
