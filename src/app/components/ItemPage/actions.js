@@ -22,6 +22,11 @@ export const SubmitForm = (state, ev) => {
 }
 
 export const OnMount = (state, ev) => {
+
+  void ev.target.clientHeight
+  ev.target.classList.add('opened')
+  
+
   if (!state.items[state.path.split('/')[2]] && !state.itemPage.fetching) {
     return [
       state,

@@ -25,8 +25,14 @@ export const ListingPage = ({items, submitted, search, currentQuery, fetching, l
       </div>
     </form>
 
-    <div class="listing">
-      {items.map(item => <Item item={item} />)}
+    <div class="bottom">
+    
+      <div class="listing">
+        {items.map(item => <Item item={item} />)}
+      </div>
+
+      
+
     </div>
 
   </div>

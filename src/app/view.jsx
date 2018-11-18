@@ -12,7 +12,7 @@ import {NewItemPage} from './components/NewItemPage'
 // Root view
 export const view = state => (
   <div class="app">
-    {state.path === '/' ? <ListingPage items={state.listingPage.listing.map(id => state.items[id])} {...state.listingPage} /> : null}
+    <ListingPage items={state.listingPage.listing.map(id => state.items[id])} {...state.listingPage} />
     {state.path.startsWith('/items/') ? <ItemPage item={state.items[state.path.split('/')[2]] || {}} /> : null}
     {state.path === '/sell' ? <NewItemPage {...state.newItemPage} /> : null}
   </div>

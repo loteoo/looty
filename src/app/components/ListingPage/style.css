@@ -1,5 +1,9 @@
 .listing-page {
   
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow: auto;
+
   .map {
     height: 50vh;
   }
@@ -38,6 +42,11 @@
         background-color: aliceblue;
       }
     }
+  }
+
+
+  .bottom {
+    position: relative;
   }
   
   
