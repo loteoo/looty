@@ -27,7 +27,7 @@ export const OnMount = (state, ev) => {
   ev.target.classList.add('opened')
   
 
-  if (!state.items[state.path.split('/')[2]] && !state.itemPage.fetching) {
+  if (!state.items[state.path.split('/')[2]] && !state.fetching) {
     return [
       state,
       Http.fetch({

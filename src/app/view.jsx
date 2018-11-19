@@ -13,11 +13,11 @@ import {NewItemPage} from './components/NewItemPage'
 
 // Root view
 export const view = state => (
-  <div class='app' style={{transform: `translateY(-${state.appOffset}px)`}} onmount={OnMount}>
+  <div class='app' onmount={OnMount} onscroll={OnScroll}>
 
-    <div class="map" onmount={OnMapMount}></div>
+    <div class="map" style={{transform: `translate3d(0, ${state.mapOffset}px, 0)`}} onmount={OnMapMount}></div>
 
-    <form class="search-form" key="search-form" method="post" onsubmit={SubmitSearch}>
+    <form class="search-form" key="search-form" method="post" onsubmit={SubmitSearch} style={{transform: `translate3d(0, ${state.inputOffset}px, 0)`}}>
       <div class="floating">
         <input
           name="search"
@@ -28,31 +28,24 @@ export const view = state => (
       </div>
     </form>
 
-    <div class="bottom" onscroll={OnScroll}>
-
-      
-      {state.path === '/sell' ? <NewItemPage {...state.newItemPage} /> : null}
-
-      <div class="listing">
-        {state.listing.map(id => {
-          
-          const item = state.items[id]
-          
-          return state.path === `/items/${item._id}`
-            ? <ItemPage item={item} />
-            : (
-              <a href={`/#/items/${item._id}`} class="item" key={item._id} id={`/items/${item._id}`}>
-                <img src={item.image} alt={item.title} />
-                <div class="info">
-                  <h4 class="title">{item.title}</h4>
-                  <div class="description">{item.description}</div>
-                </div>
-              </a>
-            )
-        })}
-      </div>
-
+    <div class="listing">
+      {state.listing.map(id => {
+        const item = state.items[id]
+        return (
+          <a href={`/#/items/${item._id}`} class="item" key={item._id}>
+            <img src={item.image} alt={item.title} />
+            <div class="info">
+              <h4 class="title">{item.title}</h4>
+              <div class="description">{item.description}</div>
+            </div>
+          </a>
+        )
+      })}
     </div>
+
+    {state.path.startsWith('/items/') ? <ItemPage item={state.items[state.path.split('/')[2]]} /> : null}
+    
+    {state.path === '/sell' ? <NewItemPage {...state.newItemPage} /> : null}
 
 
 

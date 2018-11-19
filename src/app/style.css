@@ -335,20 +335,27 @@ select {
   
   scroll-behavior: smooth;
 
-  transform: translateY(0);
-  transition: opacity 300ms, transform 300ms cubic-bezier(0.16, 1, 0.16, 1);
+  max-height: 100vh;
+  overflow: auto;
 
   .map {
     height: 50vh;
+    z-index: -1;
+    transform: translate3d(0, 0, 0);
   }
   
   .search-form {
-    position: absolute;
-    top: 50vh;
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
     padding: 0 3rem;
-    z-index: 10;
+    z-index: 20;
+    
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000;
+    transform: translate3d(0, 0, 0);
     
     .floating {
       position: absolute 0 0 auto 0;
@@ -383,10 +390,8 @@ select {
   }
 
 
-  .bottom {
+  .listing {
     position: relative;
-    max-height: 100vh;
-    overflow: auto;
     border-top: 1px solid var(--border-color);
   }
   

@@ -34,7 +34,7 @@ export const OnMount = (state, ev) => {
     return [
       state,
       Http.fetch({
-        url: '/_design/all_items/_view/all_items?limit=500',
+        url: '/_design/all_items/_view/all_items?limit=50',
         action: ReceiveItems
       })
     ]
@@ -111,31 +111,10 @@ export const ReceiveItems = (state, response) => ({
 
 
 
-
-// export const OnScroll = (state, ev) => ()
-
-export const OnScroll = (state, ev) => {
-
-
-  // Scrolling down
-  if ((ev.target.treshHold || 0) < ev.target.scrollTop) {
-    ev.target.treshHold = ev.target.scrollTop
-    
-    return {
-      ...state,
-      appOffset: window.innerHeight / 2
-    }
-
-  }
-
-  // Scrolling up
-  if((ev.target.treshHold || 0) > ev.target.scrollTop) {
-    ev.target.treshHold = ev.target.scrollTop
-    
-    return {
-      ...state,
-      appOffset: 0
-    }
-  }
-  
-}
+export const OnScroll = (state, ev) => ({
+  ...state,
+  mapOffset: ev.target.scrollTop < window.innerHeight / 2 ? ev.target.scrollTop / 2 : state.mapOffset,
+  inputOffset: ev.target.scrollTop + 60 > window.innerHeight / 2
+    ? 60
+    : (-1 * ev.target.scrollTop) + (window.innerHeight / 2)
+})
