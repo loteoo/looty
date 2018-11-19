@@ -1,16 +1,25 @@
 
 import {Navigate} from './actions.js'
 
-import {listingPage} from './components/ListingPage/init.js'
 import {itemPage} from './components/ItemPage/init.js'
 import {newItemPage} from './components/NewItemPage/init.js'
 
 
 // Initial state of the app
 export const init = Navigate({
+
+  // Nav
   path: '/',
 
-  listingPage,
+  // Listing
+  search: '',
+  submitted: false,
+  currentQuery: null,
+  fetching: false,
+  loaded: false,
+  listing: [],
+
+  // Slices
   itemPage,
   newItemPage,
 
