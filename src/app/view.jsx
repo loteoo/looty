@@ -30,12 +30,25 @@ export const view = state => (
 
     <div class="bottom">
 
-      {state.path.startsWith('/items/') ? <ItemPage item={state.items[state.path.split('/')[2]] || {}} /> : null}
       
       {state.path === '/sell' ? <NewItemPage {...state.newItemPage} /> : null}
 
       <div class="listing">
-        {state.listing.map(id => <Item item={state.items[id]} />)}
+        {state.listing.map(id => {
+          const item = state.items[id]
+
+          return state.path === `/items/${item._id}`
+            ? <ItemPage item={item} />
+            : (
+              <a href={`/#/items/${item._id}`} class="item" key={item._id} id={`/items/${item._id}`}>
+                <img src={item.image} alt={item.title} />
+                <div class="info">
+                  <h4 class="title">{item.title}</h4>
+                  <div class="description">{item.description}</div>
+                </div>
+              </a>
+            )
+        })}
       </div>
 
     </div>
@@ -47,13 +60,3 @@ export const view = state => (
 
 
 
-
-const Item = ({item}) => (
-  <a href={`/#/items/${item._id}`} class="item" key={item._id}>
-    <img src={item.image} alt={item.title} />
-    <div class="info">
-      <h4 class="title">{item.title}</h4>
-      <div class="description">{item.description}</div>
-    </div>
-  </a>
-)
