@@ -10,7 +10,7 @@ export const Http = {
         .then(data => dispatch(props.action, data))
         .catch(err => console.log('Fetch error: ', err))
     },
-    url: `http://localhost:5984/looty${props.url}`,
+    url: `http://${window.location.hostname}:5984/looty${props.url}`,
     action: props.action
   }),
 
@@ -28,7 +28,7 @@ export const Http = {
         .then(data => dispatch(props.action, data))
         .catch(err => console.log('Fetch error: ', err))
     },
-    url: `http://localhost:5984/looty${props.url}`,
+    url: `http://${window.location.hostname}:5984/looty${props.url}`,
     data: props.data,
     action: props.action
   })

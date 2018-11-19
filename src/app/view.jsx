@@ -5,7 +5,7 @@ import './style.css'
 import {h} from 'hyperapp'
 
 // Import actions
-import {SetSearch, SubmitSearch, OnMount, OnMapMount} from './actions'
+import {SetSearch, SubmitSearch, OnMount, OnMapMount, OnScroll} from './actions'
 
 // Import components
 import {ItemPage} from './components/ItemPage'
@@ -13,7 +13,7 @@ import {NewItemPage} from './components/NewItemPage'
 
 // Root view
 export const view = state => (
-  <div class="app" onmount={OnMount}>
+  <div class='app' style={{transform: `translateY(-${state.appOffset}px)`}} onmount={OnMount}>
 
     <div class="map" onmount={OnMapMount}></div>
 
@@ -28,7 +28,7 @@ export const view = state => (
       </div>
     </form>
 
-    <div class="bottom">
+    <div class="bottom" onscroll={OnScroll}>
 
       
       {state.path === '/sell' ? <NewItemPage {...state.newItemPage} /> : null}

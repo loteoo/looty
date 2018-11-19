@@ -14,6 +14,7 @@ export const init = Navigate({
   // Gmap
   map: null,
   infowindow: null,
+  appOffset: 0,
 
   // Listing
   search: '',

@@ -94,7 +94,7 @@ export const ReceiveItems = (state, response) => ({
           </a>
         `
       })
-      
+
       state.infowindow.open(state.map, marker)
 
     })
@@ -108,3 +108,34 @@ export const ReceiveItems = (state, response) => ({
     }
   }, state.items)
 })
+
+
+
+
+// export const OnScroll = (state, ev) => ()
+
+export const OnScroll = (state, ev) => {
+
+
+  // Scrolling down
+  if ((ev.target.treshHold || 0) < ev.target.scrollTop) {
+    ev.target.treshHold = ev.target.scrollTop
+    
+    return {
+      ...state,
+      appOffset: window.innerHeight / 2
+    }
+
+  }
+
+  // Scrolling up
+  if((ev.target.treshHold || 0) > ev.target.scrollTop) {
+    ev.target.treshHold = ev.target.scrollTop
+    
+    return {
+      ...state,
+      appOffset: 0
+    }
+  }
+  
+}
