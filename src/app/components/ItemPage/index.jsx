@@ -21,8 +21,6 @@ export const ItemPage = ({item}) => (
       </div>
 
       <a href={item.url} target="_blank">View on kijiji</a>
-      
-      <pre>{JSON.stringify(item, null, 2)}</pre>
     </div>
     
   </div>

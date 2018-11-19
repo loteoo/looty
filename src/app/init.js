@@ -11,6 +11,10 @@ export const init = Navigate({
   // Nav
   path: '/',
 
+  // Gmap
+  map: null,
+  infowindow: null,
+
   // Listing
   search: '',
   submitted: false,

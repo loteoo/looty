@@ -43,63 +43,18 @@ export const OnMount = (state, ev) => {
 }
 
 
-export const OnMapMount = (state, ev) => {
-  
-  const nextState = {
-    ...state,
-    map: new google.maps.Map(ev.target, {
-      gestureHandling: 'greedy',
-      disableDefaultUI: true,
-      center: {
-        lat: 45.5260261,
-        lng: -73.5775953
-      },
-      zoom: 12
-    })
-  }
-
-  // Build markers for each item
-  Object.keys(state.items).map(itemId => {
-
-    let item = state.items[itemId]
-
-    let marker = new google.maps.Marker({
-      title: item.title,
-      position: {
-        lat: item.attributes.location.latitude,
-        lng: item.attributes.location.longitude
-      },
-      // icon: item.image,
-      map: nextState.map
-    })
-
-    let infowindow = new google.maps.InfoWindow({
-      content: /*html*/`
-        <a href="#/items/${item._id}" class="map-marker-info-window">
-          <img src="${item.image}" alt="${item.title}">
-          <div class="info">
-            <h4>${item.title}</h4>
-            <p>${item.description}</p>
-          </div>
-        </a>
-      `
-    })
-
-
-
-    marker.addListener('click', (event, test) => {
-      infowindow.open(nextState.map, marker)
-    })
-
-    
-
-
-    return marker
+export const OnMapMount = (state, ev) => ({
+  ...state,
+  map: new google.maps.Map(ev.target, {
+    gestureHandling: 'greedy',
+    disableDefaultUI: true,
+    center: {
+      lat: 45.5260261,
+      lng: -73.5775953
+    },
+    zoom: 12
   })
-  
-
-  return nextState
-}
+})
 
 
 
@@ -111,5 +66,45 @@ export const ReceiveItems = (state, response) => ({
   fetching: false,
   loaded: true,
   listing: response.rows.map(item => item.value._id),
-  items: response.rows.reduce((cache, item) => ({...cache, [item.value._id]: item.value}), state.items)
+  items: response.rows.reduce((items, item) => {
+
+    let marker = new google.maps.Marker({
+      title: item.value.title,
+      position: {
+        lat: item.value.attributes.location.latitude,
+        lng: item.value.attributes.location.longitude
+      },
+      // icon: item.value.image,
+      map: state.map ? state.map : null
+    })
+
+    marker.addListener('click', ev => {
+
+      if (state.infowindow) {
+        state.infowindow.close()
+      }
+
+      state.infowindow = new google.maps.InfoWindow({
+        content: /*html*/`
+          <a href="#/items/${item.value._id}" class="map-marker-info-window">
+            <img src="${item.value.image}" alt="${item.value.title}">
+            <div class="info">
+              <h4>${item.value.title}</h4>
+            </div>
+          </a>
+        `
+      })
+      
+      state.infowindow.open(state.map, marker)
+
+    })
+
+    return {
+      ...items,
+      [item.value._id]: {
+        ...item.value,
+        marker
+      }
+    }
+  }, state.items)
 })

@@ -14,7 +14,7 @@ export const SetValue = (state, key, ev) => lens(state, {
 
 export const SubmitForm = (state, ev) => {
   ev.preventDefault();
-  alert('Submitted!\nForm state: \n\n' + JSON.stringify(state, null, 2));
+  // alert('Submitted!\nForm state: \n\n' + JSON.stringify(state, null, 2));
   return lens(state, {
     ...state.itemPage,
     submitted: true

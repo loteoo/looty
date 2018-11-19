@@ -35,8 +35,9 @@ export const view = state => (
 
       <div class="listing">
         {state.listing.map(id => {
+          
           const item = state.items[id]
-
+          
           return state.path === `/items/${item._id}`
             ? <ItemPage item={item} />
             : (
